@@ -1,6 +1,6 @@
 {
     "name": "classy-k6",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "type": "module",
     "description": "A class-based TypeScript DSL for authoring k6 tests",
     "main": "./dist/index.js",

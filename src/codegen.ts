@@ -19,6 +19,8 @@ export function runCodegen(target: string) {
     .filter(stmt => {
       if (stmt.getKind() === SyntaxKind.ImportDeclaration) return false;
       if (stmt.getKind() === SyntaxKind.ClassDeclaration) return false;
+      const text = stmt.getText();
+      if (text.includes('classy-k6')) return false;  // 🚨 remove any statement mentioning classy-k6
       // Only keep function or variable declarations
       return stmt.getKind() === SyntaxKind.FunctionDeclaration ||
         stmt.getKind() === SyntaxKind.VariableStatement;
