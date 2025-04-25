@@ -16,10 +16,13 @@ export function runCodegen(target: string) {
     .join("\n");
 
   const topLevelStatements = sourceFile.getStatements()
-    .filter(stmt =>
-      stmt.getKind() !== SyntaxKind.ImportDeclaration &&
-      stmt.getKind() !== SyntaxKind.ClassDeclaration
-    )
+    .filter(stmt => {
+      if (stmt.getKind() === SyntaxKind.ImportDeclaration) return false;
+      if (stmt.getKind() === SyntaxKind.ClassDeclaration) return false;
+      // Only keep function or variable declarations
+      return stmt.getKind() === SyntaxKind.FunctionDeclaration ||
+        stmt.getKind() === SyntaxKind.VariableStatement;
+    })
     .map(stmt => stmt.getText())
     .join("\n\n");
 
