@@ -1,5 +1,5 @@
 export type k6TestOptions = Partial<{
-  cloud: { project?: string; name?: string;[key: string]: any };
+  cloud: { projectID?: string; name?: string;[key: string]: any };
   thresholds: Record<string, any>;
 }>;
 
