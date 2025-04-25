@@ -11,6 +11,7 @@ export function runCodegen(target: string) {
 
   const imports = sourceFile.getImportDeclarations()
     .filter(decl => !decl.getModuleSpecifierValue().includes("./dsl"))
+    .filter(decl => !decl.getModuleSpecifierValue().includes("classy-k6"))
     .map(decl => decl.getText())
     .join("\n");
 
